@@ -1,12 +1,12 @@
 package com.myshop.online.controller;
 
 
+
 import com.myshop.online.model.Customer;
 import com.myshop.online.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 
 @RestController
 public class CustomerController {
@@ -29,5 +29,7 @@ public class CustomerController {
         repo.save(p);
         return p;
     }
+
+
 
 }

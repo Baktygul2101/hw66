@@ -32,11 +32,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">by Product</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/registration">Registration</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">login</a>
+            </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/registration"><span class="glyphicon glyphicon-user"></span> Registration</a></li>
-            <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
+
     </div>
 </nav>
 
