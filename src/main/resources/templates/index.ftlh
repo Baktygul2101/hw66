@@ -14,6 +14,8 @@
 
 <div class="jumbotron text-center" style="margin-bottom:0">
     <h1>WELCOME to MY ONLINE SHOP</h1>
+
+    </div>
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -38,8 +40,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="/login">login</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/search">Search</a>
+            </li>
         </ul>
-
     </div>
 </nav>
 

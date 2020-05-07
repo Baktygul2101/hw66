@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>Sweater</title>
-    <link rel="stylesheet" href="/static/style.css" />
+    <meta charset="UTF-8">
+    <title>Products</title>
 </head>
 <body>
-    <ul>
-        <#list products as pdt>
+<h1>Products</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th>Name</th>
+        <th>image</th>
+        <th>price</th>
+    </tr>
+    </thead>
+    <tbody>
+
+        <#list products as product>
             <li>
-                <p>
-                    ${pdt.id} - ${pdt.name} - ${pdt.description}-${pdt.price}-${pdt.quantity}</a>
-                </p>
+                <p>${product.id} - ${product.name} - ${product.image}- ${product.price} -</p>
             </li>
         </#list>
-    </ul>
-    </body>
-</html>
 
+    </tbody>
+</table>
+
+
+</body>
+</html>

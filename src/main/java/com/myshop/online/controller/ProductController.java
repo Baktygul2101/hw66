@@ -21,11 +21,6 @@ public class ProductController {
     private ProductRepository productRepository;
 
 
-    @RequestMapping(value="/products",method= RequestMethod.GET)
-    public String getMainPage(Model model) {
-        model.addAttribute("products", productRepository.findAll());
-        return "products";
-    }
 
 
     @PostMapping ("/addProduct")
