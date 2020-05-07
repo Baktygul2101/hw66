@@ -6,7 +6,7 @@
 </head>
 <body>
 
-    <div class="form-row">
+    <div class="form-row text-center">
         <div class="form-group col-md-6">
             <form method="get" action="/search" class="form-inline">
                 <input type="text" name="filter" class="form-control" value="${filter?ifExists}" placeholder="Search by product name" />

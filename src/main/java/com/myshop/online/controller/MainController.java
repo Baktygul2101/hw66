@@ -51,7 +51,11 @@ public class MainController {
         return "products";
     }
 
-
+    @RequestMapping("/product/{id}")
+    public String getProductById(@PathVariable int id, Model model) {
+        model.addAttribute("product", productService.getProductById(id));
+        return "product";
+    }
     @RequestMapping("/categories")
     public String getCategories(Model model) {
         model.addAttribute("categories", categoryRepository.findAll());
