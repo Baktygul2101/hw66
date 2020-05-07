@@ -19,11 +19,13 @@ public class Category{
     @GeneratedValue
     private int id;
     @NotBlank
+    @Column
     private String categoryName;
     @NotNull
+    @Column
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    @OneToMany(fetch = FetchType.LAZY)
     @OrderBy("name ASC")
     List<Product> products;
 }

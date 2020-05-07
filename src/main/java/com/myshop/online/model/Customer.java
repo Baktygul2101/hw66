@@ -23,11 +23,14 @@ public class Customer {
     private Integer id;
 
     @NotNull
+    @Column
     private String name;
 
     @NotNull(message = "Адрес должен быть задан, для доставки")
+    @Column
     private String address;
     @NotNull
+    @Column
     private String phoneNumber;
 
     @NotNull

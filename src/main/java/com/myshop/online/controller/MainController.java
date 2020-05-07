@@ -2,10 +2,10 @@ package com.myshop.online.controller;
 
 
 
-import com.myshop.online.exception.exception.CustomerNotFoundException;
+import com.myshop.online.exception.CustomerNotFoundException;
 import com.myshop.online.model.Customer;
-import com.myshop.online.model.Product;
 import com.myshop.online.repository.ProductRepository;
+import com.myshop.online.service.ProductService;
 import lombok.var;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,27 +29,31 @@ public class MainController {
 
     @Autowired
     ProductRepository repo;
-
+    @Autowired
+    private ProductService productService;
     @GetMapping("/")
     public String mainPage(Model model) {
         return "index";
     }
 
-   /* @GetMapping("/registration")
-    public String registration(Model model) {
-        return "registration";
+    /*@GetMapping("products")
+    public String productList(Model model) {
+        model.addAttribute("products", productService.getProducts());
+        return "products";
     }*/
+
+
 
     @RequestMapping(value="/registration",method= RequestMethod.GET)
     public String registerPage(Model model){
         model.addAttribute("customer", new Customer());
-        return "registration";
+        return "register";
     }
     @RequestMapping(value="/registerSuccess",method=RequestMethod.POST)
     public String registerSuccess(@Valid @ModelAttribute("user") Customer user, BindingResult result) {
 
         if(result.hasErrors()){
-            return "registration";
+            return "register";
         }
         return "redirect:/login";
     }

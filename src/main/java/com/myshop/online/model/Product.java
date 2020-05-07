@@ -20,14 +20,19 @@ public class Product{
     @GeneratedValue
     private int id;
     @NotNull
+    @Column
     private String name;
+    @Column
     private String image;
 
     @PositiveOrZero
+    @Column
     private int quantity;
     @NotBlank
+    @Column
     private String description;
     @Positive
+    @Column
     private double price;
 
     @ManyToOne

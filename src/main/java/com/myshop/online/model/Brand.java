@@ -18,9 +18,10 @@ public class Brand{
     @GeneratedValue
     private int id;
     @NotBlank
+    @Column
     private String brandName;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "brand")
+    @OneToMany(fetch = FetchType.LAZY)
     @OrderBy("name ASC")
     List<Product> products;
 }

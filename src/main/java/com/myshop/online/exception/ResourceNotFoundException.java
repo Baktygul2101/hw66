@@ -1,4 +1,4 @@
-package com.myshop.online.exception.exception;
+package com.myshop.online.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
