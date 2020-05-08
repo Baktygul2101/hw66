@@ -13,7 +13,7 @@
         <div class="card flex flex-col align-center">
 
                 <p>about: ${product.description}</p>
-                <p> <img src="/image/${product.image}"></p>
+                <p> <img src="/static/images/${product.image}"></p>
                 <p>price: ${product.price}</p>
                 <p>saldo: ${product.quantity}</p>
 

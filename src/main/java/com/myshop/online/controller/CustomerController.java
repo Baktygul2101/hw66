@@ -2,16 +2,13 @@ package com.myshop.online.controller;
 
 
 
-import com.myshop.online.model.Customer;
-import com.myshop.online.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
 public class CustomerController {
 
-    @Autowired
+  /*  @Autowired
     private CustomerRepository repo;
 
     @PostMapping("/registration")
@@ -28,7 +25,7 @@ public class CustomerController {
         Customer p = repo.findByEmail(email).get();
         repo.save(p);
         return p;
-    }
+    }*/
 
 
 

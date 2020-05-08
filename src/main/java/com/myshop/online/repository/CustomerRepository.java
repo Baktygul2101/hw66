@@ -6,5 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface CustomerRepository extends CrudRepository<Customer, String> {
-    public Optional<Customer> findByEmail(String s);
+
+    boolean existsByEmail(String email);
+    Optional<Customer> findByEmail(String email);
 }
