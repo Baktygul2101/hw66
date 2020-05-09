@@ -2,8 +2,8 @@
 <#import "partials/main.ftlh" as main />
 
 <#-- обрабатываем его, и передаём ему список скриптов, которые необходимо подключить-->
-<@main.renderWith>
 
+<@main.renderWith scripts=["/js/main.js"]>
     <div>
         <div class="jumbotron text-center" style="margin-bottom:0">
             <h1>WELCOME to MY ONLINE SHOP</h1>
@@ -41,6 +41,7 @@
             </ul>
         </div>
     </nav>
+
 
 
     <form class="flex box-128" action="/logout" method="post">
