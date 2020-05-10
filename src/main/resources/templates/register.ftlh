@@ -3,8 +3,7 @@
 <@main.renderWith>
     <h2>Please register</h2>
     <div>
-        <form action="/register" method="post" id="registration-form">
-
+            <form action="/register" method="post" id="registration-form">
             <#if _csrf??>
                 <input type="hidden" name="${(_csrf.parameterName)!'csrf'}" value="${(_csrf.token)!'--no-token--'}"/>
             </#if>

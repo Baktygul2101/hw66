@@ -62,7 +62,7 @@
     <div class="row">
         <div class="col-12 col-sm-6 col-lg-4">
             <#list products as product>
-            <div class="card">
+            <div class="card" style="background-color: #cccccc">
                 <h5 class="card-header"> ${product.name}</h5>
                 <div class="card-body">
                     <a href="/product/${product.id}"> <img src="/images/${product.image}" width="150" height="150"></a>
