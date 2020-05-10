@@ -3,23 +3,18 @@ package com.myshop.online.controller;
 
 
 import com.myshop.online.model.Product;
-import com.myshop.online.repository.ProductRepository;
 import com.myshop.online.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-//@Controller
 @RequestMapping
 @RestController
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class RestProductController {
-    @Autowired
+
     private ProductService service;
-    @Autowired
-    private ProductRepository productRepository;
-
-
-
 
     @PostMapping ("/addProduct")
     public Product addProduct(@RequestBody Product product){
@@ -30,15 +25,6 @@ public class RestProductController {
         return service.saveProducts(products);
     }
 
-    @GetMapping
-    public List<Product> findAllProducts(){
-        return service.getProducts();
-    }
-
-    @GetMapping ("/idproduct/{id}")
-    public Product findProductById(@PathVariable int id){
-        return  service.getProductById(id);
-    }
 
     @GetMapping ("/product/{name}")
     public Product findProductByName(@PathVariable String name){

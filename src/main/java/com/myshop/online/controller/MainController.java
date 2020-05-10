@@ -1,29 +1,22 @@
 package com.myshop.online.controller;
 
 
-import com.myshop.online.dto.CustomerRegisterForm;
-import com.myshop.online.exception.CustomerNotFoundException;
 import com.myshop.online.model.Product;
 import com.myshop.online.repository.CategoryRepository;
 import com.myshop.online.repository.ProductRepository;
-import com.myshop.online.service.CustomerService;
 import com.myshop.online.service.ProductService;
+import com.myshop.online.service.PropertiesService;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.security.Principal;
 
 import static java.util.stream.Collectors.toList;
 
@@ -31,7 +24,7 @@ import static java.util.stream.Collectors.toList;
 @RequestMapping
 @AllArgsConstructor
 public class MainController {
-    private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
+
 
     @Autowired
     ProductRepository repo;
@@ -47,36 +40,73 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/products")
+   @RequestMapping("/products")
     public String getProducts(Model model) {
         model.addAttribute("products", repo.findAll());
         return "products";
     }
 
     @RequestMapping("/product/{id}")
-    public String getProductById(@PathVariable int id, Model model) {
+    public String getProduct(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
         return "product";
     }
-    @RequestMapping("/categories")
-    public String getCategories(Model model) {
-        model.addAttribute("categories", categoryRepository.findAll());
-        return "categories";
+
+
+    private final PropertiesService propertiesService;
+
+    private static <T> void constructPageable(Page<T> list, int pageSize, Model model, String uri) {
+        if (list.hasNext()) {
+            model.addAttribute("nextPageLink", constructPageUri(uri, list.nextPageable().getPageNumber(), list.nextPageable().getPageSize()));
+        }
+
+        if (list.hasPrevious()) {
+            model.addAttribute("prevPageLink", constructPageUri(uri, list.previousPageable().getPageNumber(), list.previousPageable().getPageSize()));
+        }
+
+        model.addAttribute("hasNext", list.hasNext());
+        model.addAttribute("hasPrev", list.hasPrevious());
+        model.addAttribute("items", list.getContent());
+        model.addAttribute("defaultPageSize", pageSize);
+    }
+
+    private static String constructPageUri(String uri, int page, int size) {
+        return String.format("%s?page=%s&size=%s", uri, page, size);
+    }
+
+    @GetMapping
+    public String products (Model model, Pageable pageable, HttpServletRequest uriBuilder) {
+        var products = productService.getProducts(pageable);
+        var uri = uriBuilder.getRequestURI();
+        constructPageable(products, propertiesService.getDefaultPageSize(), model, uri);
+
+        return "products";
     }
 
 
-    @ExceptionHandler(CustomerNotFoundException.class)
-    public ModelAndView handleEmployeeNotFoundException(HttpServletRequest request, Exception ex){
-        logger.error("Requested URL="+request.getRequestURL());
-        logger.error("Exception Raised="+ex);
 
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("exception", ex);
-        modelAndView.addObject("url", request.getRequestURL());
 
-        modelAndView.setViewName("error");
-        return modelAndView;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @GetMapping("/products")
@@ -88,10 +118,8 @@ public class MainController {
         } else {
             products = productRepository.findAll();
         }
-
         model.addAttribute("products", products);
         model.addAttribute("filter", filter);
-
         return "products";
     }
     @ExceptionHandler(BindException.class)
@@ -104,47 +132,5 @@ public class MainController {
         return ResponseEntity.unprocessableEntity()
                 .body(apiFieldErrors);
     }
-
-
-    //
-
-    private final CustomerService customerService;
-
-    @GetMapping("/profile")
-    public String pageCustomerProfile(Model model, Principal principal)
-    {
-        var user = customerService.getByEmail(principal.getName());
-        model.addAttribute("dto", user);
-        return "profile";
-    }
-
-    @GetMapping("/register")
-    public String pageRegisterCustomer(Model model) {
-        if (!model.containsAttribute("dto")) {
-            model.addAttribute("dto", new CustomerRegisterForm());
-        }
-        return "register";
-    }
-
-    @PostMapping("/register")
-    public String registerPage(@Valid CustomerRegisterForm customerRequestDto,
-                               BindingResult validationResult,
-                               RedirectAttributes attributes) {
-        attributes.addFlashAttribute("dto", customerRequestDto);
-
-        if (validationResult.hasFieldErrors()) {
-            attributes.addFlashAttribute("errors", validationResult.getFieldErrors());
-            return "redirect:/register";
-        }
-        customerService.register(customerRequestDto);
-        return "redirect:/login";
-    }
-
-    @GetMapping("/login")
-    public String loginPage(@RequestParam(required = false, defaultValue = "false") Boolean error, Model model) {
-        model.addAttribute("error", error);
-        return "login";
-    }
-
 
 }

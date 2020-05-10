@@ -16,18 +16,18 @@
 
         <div>
             <label class="flex flex-v-center ">
-                <span class="label-input-text">Адрес почты:</span>
-                <input type="text" name="username" placeholder="ваш адрес почты"  value="${(dto.email)!''}" autofocus >
+                <span class="label-input-text">Адрес почты:</span><br>
+                <input type="email" name="email" class="form-control mb-1" placeholder="Email" value="${(dto.email)!''}"autofocus ><br>
             </label>
         </div>
         <div>
             <label class="flex flex-v-center label-input-text">
-                <span class="label-input-text">Пароль:</span>
-                <input type="text" name="password" placeholder="пароль" value="">
+                <span class="label-input-text">Пароль:     </span><br>
+                <input type="password" name="password" class="form-control mb-1" placeholder="Пароль"  value=""> <br>
             </label>
         </div>
         <div>
-            <button type="submit">Войти!</button>
+            <button type="submit" class="btn btn-outline-primary btn-block">Войти!</button>
         </div>
     </form>
     <div class="bottom-box">
