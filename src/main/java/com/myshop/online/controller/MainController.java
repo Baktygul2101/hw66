@@ -12,10 +12,6 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +39,8 @@ public class MainController {
     private ProductService productService;
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     @GetMapping("/")
     public String mainPage(Model model) {
@@ -81,25 +79,20 @@ public class MainController {
     }
 
 
-    @GetMapping("/search")
-    public String main(
-            @RequestParam(required = false, defaultValue = "") String filter,
-            Model model,
-            @PageableDefault(sort = { "id" }, direction = Sort.Direction.DESC) Pageable pageable
-    ) {
-        Page<Product> page;
+    @GetMapping("/products")
+    public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
+        Iterable<Product> products = productRepository.findAll();
 
         if (filter != null && !filter.isEmpty()) {
-            page = repo.findByName(filter, pageable);
+            products = productRepository.findAllByName(filter);
         } else {
-            page = repo.findAll(pageable);
+            products = productRepository.findAll();
         }
 
-        model.addAttribute("page", page);
-        model.addAttribute("url", "/");
+        model.addAttribute("products", products);
         model.addAttribute("filter", filter);
 
-        return "search";
+        return "products";
     }
     @ExceptionHandler(BindException.class)
     private ResponseEntity<Object> handleBindExceptionResponseEntity(BindException ex){

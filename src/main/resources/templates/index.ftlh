@@ -18,10 +18,10 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/categories">by Category</a>
+                    <a class="nav-link" href="#">by Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/brands">by Brand</a>
+                    <a class="nav-link" href="#">by Brand</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/products">by Product</a>
@@ -36,7 +36,7 @@
                     <a class="nav-link" href="/profile">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/search">Search</a>
+                    <a class="nav-link" href="#"></a>
                 </li>
             </ul>
         </div>
@@ -52,6 +52,8 @@
         </form>
 
     </div>
+
+
 
 </@main.renderWith>
 
