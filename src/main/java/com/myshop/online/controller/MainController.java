@@ -5,18 +5,13 @@ import com.myshop.online.model.Product;
 import com.myshop.online.repository.CategoryRepository;
 import com.myshop.online.repository.ProductRepository;
 import com.myshop.online.service.ProductService;
-import com.myshop.online.service.PropertiesService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 
 import static java.util.stream.Collectors.toList;
 
@@ -46,14 +41,14 @@ public class MainController {
         return "products";
     }
 
-    @RequestMapping("/product/{id}")
-    public String getProduct(@PathVariable int id, Model model) {
+    @GetMapping("/product/{id}")
+    public String getProductById(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.getProductById(id));
         return "product";
     }
 
 
-    private final PropertiesService propertiesService;
+  /*  private final PropertiesService propertiesService;
 
     private static <T> void constructPageable(Page<T> list, int pageSize, Model model, String uri) {
         if (list.hasNext()) {
@@ -81,33 +76,13 @@ public class MainController {
         constructPageable(products, propertiesService.getDefaultPageSize(), model, uri);
 
         return "products";
-    }
+    }*/
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//для поиска
 
     @GetMapping("/products")
     public String main(@RequestParam(required = false, defaultValue = "") String filter, Model model) {

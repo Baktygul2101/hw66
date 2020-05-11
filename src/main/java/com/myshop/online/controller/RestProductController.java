@@ -9,7 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@RequestMapping
+//@RequestMapping
 @RestController
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class RestProductController {
@@ -26,7 +26,7 @@ public class RestProductController {
     }
 
 
-    @GetMapping ("/product/{name}")
+    @GetMapping ("/productName/{name}")
     public Product findProductByName(@PathVariable String name){
         return  service.getProductByName(name);
     }

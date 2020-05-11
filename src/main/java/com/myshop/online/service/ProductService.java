@@ -36,10 +36,11 @@ public class ProductService {
     }
 
 
-    public Product getProductById(int id){
+    public Product getProductsById(int id){
         return repository.findAllById(id).orElse(null);
     }
-    public Product getProduct(Integer id) {
+
+    public Product getProductById(int id) {
         return repository.findById(id).get();
     }
 
