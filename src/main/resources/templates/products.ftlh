@@ -67,6 +67,7 @@
                 <div class="card-body">
                     <a href="/product/${product.id}"> <img src="/images/${product.image}" width="150" height="150"></a>
                     <br>
+                    <a href="/cart/${product.id}" class="btn btn-outline-dark">Add to cart</a>
                     <a href="/product/${product.id}" class="btn btn-outline-dark">Learn More</a>
                 </div>
             </div>

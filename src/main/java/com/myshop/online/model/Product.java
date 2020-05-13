@@ -9,6 +9,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -36,12 +37,16 @@ public class Product{
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "brand_id")
     private Brand brand;
+
+
+    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Customer> customerList;
+
 
     public int getId() {
         return id;

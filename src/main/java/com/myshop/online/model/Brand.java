@@ -21,7 +21,8 @@ public class Brand{
     @Column
     private String brandName;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "brand_id", referencedColumnName = "id")
     @OrderBy("name ASC")
     List<Product> products;
 }

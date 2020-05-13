@@ -31,7 +31,7 @@
             <a href="/register"><i class="fa fa-fw fa-envelope"></i> Registration</a>
             <a href="/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
             <a href="/login"><i class="fa fa-sign-in"></i> Login</a>
-            <a href="#"><i class="fa fa-shopping-cart"></i> My orders</a>
+            <a href="/session"><i class="fa fa-shopping-cart"></i> My orders</a>
 
         </div>
         <#nested>

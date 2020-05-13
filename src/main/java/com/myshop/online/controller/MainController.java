@@ -48,40 +48,6 @@ public class MainController {
     }
 
 
-  /*  private final PropertiesService propertiesService;
-
-    private static <T> void constructPageable(Page<T> list, int pageSize, Model model, String uri) {
-        if (list.hasNext()) {
-            model.addAttribute("nextPageLink", constructPageUri(uri, list.nextPageable().getPageNumber(), list.nextPageable().getPageSize()));
-        }
-
-        if (list.hasPrevious()) {
-            model.addAttribute("prevPageLink", constructPageUri(uri, list.previousPageable().getPageNumber(), list.previousPageable().getPageSize()));
-        }
-
-        model.addAttribute("hasNext", list.hasNext());
-        model.addAttribute("hasPrev", list.hasPrevious());
-        model.addAttribute("items", list.getContent());
-        model.addAttribute("defaultPageSize", pageSize);
-    }
-
-    private static String constructPageUri(String uri, int page, int size) {
-        return String.format("%s?page=%s&size=%s", uri, page, size);
-    }
-
-    @GetMapping
-    public String products (Model model, Pageable pageable, HttpServletRequest uriBuilder) {
-        var products = productService.getProducts(pageable);
-        var uri = uriBuilder.getRequestURI();
-        constructPageable(products, propertiesService.getDefaultPageSize(), model, uri);
-
-        return "products";
-    }*/
-
-
-
-
-
 //для поиска
 
     @GetMapping("/products")
@@ -97,6 +63,15 @@ public class MainController {
         model.addAttribute("filter", filter);
         return "products";
     }
+
+   /* @RequestMapping("/search") нужно доработать форму
+    public ModelAndView search(@RequestParam String keyword) {
+        List<Product> result = productService.search(keyword);
+        ModelAndView mav = new ModelAndView("search");
+        mav.addObject("result", result);
+        return mav;
+    }*/
+
     @ExceptionHandler(BindException.class)
     private ResponseEntity<Object> handleBindExceptionResponseEntity(BindException ex){
         var apiFieldErrors=ex.getFieldErrors()

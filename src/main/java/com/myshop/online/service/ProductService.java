@@ -35,7 +35,9 @@ public class ProductService {
         return ProductDTO.from(product);
     }
 
-
+    public List<Product> search(String keyword) {
+        return repository.search(keyword);
+    }
     public Product getProductsById(int id){
         return repository.findAllById(id).orElse(null);
     }

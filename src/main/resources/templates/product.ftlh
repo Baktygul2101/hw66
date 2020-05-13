@@ -15,7 +15,7 @@
               <h1>${product.name}</h1>
                 <img src="/images/${product.image}" width="150" height="150">
                 <p><b>Цена</b>            ${product.price}</p>
-                <p><b>Наличие:</b>        ${product.quantity}</p>
+                <p><b>Наличие:</b>        ${product.quantity} шт.</p>
                 <p><b>Описание товара</b> ${product.description}</p>
 
                 <a href="/products">back to list</a>

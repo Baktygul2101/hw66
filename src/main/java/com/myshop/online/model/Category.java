@@ -25,7 +25,8 @@ public class Category{
     @Column
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
     @OrderBy("name ASC")
     List<Product> products;
 }
