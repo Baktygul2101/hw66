@@ -9,4 +9,7 @@ public interface CustomerRepository extends CrudRepository<Customer, String> {
 
     boolean existsByEmail(String email);
     Optional<Customer> findByEmail(String email);
+
+    Customer findById(Integer id);
+
 }

@@ -9,15 +9,16 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Data
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
-@NoArgsConstructor
+@Table(name="customers")
 @Entity
 @Builder
-@Table(name = "customers")
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+
 
     @NotNull
     @Column
