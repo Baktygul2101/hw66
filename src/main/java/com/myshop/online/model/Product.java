@@ -45,10 +45,11 @@ public class Product{
     private Brand brand;
 
 
-    @ManyToMany(mappedBy="productList")
-    private List<Customer> customerList;
+   // @ManyToMany(mappedBy="productList")
+  //  private List<Customer> customerList;
 
-
+    @OneToMany
+    private List<ProductInCart> productInCartList;
 
     public int getId() {
         return id;

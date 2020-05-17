@@ -14,9 +14,9 @@
 
 <div class="container">
     <h1>Ваша корзина<i class="fa fa-shopping-cart"></h1>
-    <#if cartItems??>
-        <#list cartItems as item>
-            <p>${item}</p>
+    <#if products??>
+        <#list products as item>
+            <p>${item.id}</p>
         </#list>
         <form action="/cart/empty" method="post">
             <button>Очистить корзину</button>
