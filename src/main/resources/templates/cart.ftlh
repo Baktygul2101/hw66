@@ -6,15 +6,15 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Lesson 69. Storing data in session</title>
+    <title> Cart</title>
 
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 
 <div class="container">
-    <h1>Ваша корзина</h1>
-        <#if cartItems??>
+    <h1>Ваша корзина<i class="fa fa-shopping-cart"></h1>
+    <#if cartItems??>
         <#list cartItems as item>
             <p>${item}</p>
         </#list>

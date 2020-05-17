@@ -74,7 +74,7 @@ public class MainController {
     @RequestMapping("/categories")
     public String getCategories(Model model) {
         model.addAttribute("categories", categoryRepository.findAll());
-        return "categories";
+        return "index";
     }
 
 

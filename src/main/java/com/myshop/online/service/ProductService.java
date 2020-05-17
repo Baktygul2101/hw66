@@ -1,9 +1,12 @@
 package com.myshop.online.service;
 
 
+import com.myshop.online.dto.ProductDTO;
 import com.myshop.online.model.Product;
 import com.myshop.online.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,4 +50,11 @@ public class ProductService {
         existingProduct.setPrice(product.getPrice());
         return repository.save(existingProduct);
     }
+
+    //
+    public Page<ProductDTO> findAllByCategoryId(int id, Pageable pageable){
+        return repository.findAllByCategoryId(id, pageable).map(ProductDTO::from);
+    }
+
+
 }

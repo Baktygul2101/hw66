@@ -30,7 +30,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 
     //
-    Page<Product> findAllById(int categoryId, Pageable pageable);
+    Page<Product> findAllByCategoryId(int categoryId, Pageable pageable);
 
 
 }

@@ -1,6 +1,7 @@
 package com.myshop.online.controller;
 
 import com.myshop.online.dto.CategoryDTO;
+import com.myshop.online.dto.ProductDTO;
 import com.myshop.online.service.CategoryService;
 import com.myshop.online.service.ProductService;
 import lombok.AccessLevel;
@@ -21,17 +22,16 @@ class CategoryController {
     private final ProductService productService;
 
     @GetMapping
-    public List<CategoryDTO> getPlaces(Pageable pageable) {
+    public List<CategoryDTO> getCategories(Pageable pageable) {
         return categoryService.getCategories(pageable).getContent();
     }
 
-    @GetMapping("/{id:\\d+?}")
-    public CategoryDTO placePage(@PathVariable int id) {
-        return categoryService.getCategory(id);
+
+
+    @GetMapping("/{categoryId}/products")
+    public List<ProductDTO> getAllById(@PathVariable int categoryId, Pageable pageable) {
+        return productService.findAllByCategoryId(categoryId, pageable).getContent();
     }
 
-  /*  @GetMapping("/{id:\\d+}/products")
-    public List<ProductDTO> getFoods(@PathVariable @Min(5) int id, Pageable pageable) {
-        return productService.getProducts(id, pageable).getContent();
-    }*/
+
 }

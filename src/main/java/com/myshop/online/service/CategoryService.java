@@ -23,4 +23,6 @@ public class CategoryService {
         var category = categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("category", id));
         return CategoryDTO.from(category);
     }
+
+
 }
