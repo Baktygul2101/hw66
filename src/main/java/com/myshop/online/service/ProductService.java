@@ -1,13 +1,9 @@
 package com.myshop.online.service;
 
 
-import com.myshop.online.dto.ProductDTO;
-import com.myshop.online.exception.ResourceNotFoundException;
 import com.myshop.online.model.Product;
 import com.myshop.online.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,26 +20,14 @@ public class ProductService {
         return repository.saveAll(products);
     }
 
-    public Page<ProductDTO> getProducts(Pageable pageable) {
-        return repository.findAll(pageable)
-                .map(ProductDTO::from);
-        //.toList();
+
+
+    public List<Product> getProducts(){
+        return repository.findAll();
     }
 
-    public ProductDTO getProduct(int id) {
-        var product = repository.findById(id).orElseThrow(ResourceNotFoundException::new);
-        return ProductDTO.from(product);
-    }
-
-    public List<Product> search(String keyword) {
-        return repository.search(keyword);
-    }
-    public Product getProductsById(int id){
+    public Product getProductById(int id){
         return repository.findAllById(id).orElse(null);
-    }
-
-    public Product getProductById(int id) {
-        return repository.findById(id).get();
     }
 
     public Product getProductByName(String name){

@@ -49,7 +49,8 @@ public class Customer {
     private String role = "USER";
 
 
-    @ManyToMany(mappedBy="customerList")
+
+    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Product> productList;
 
 }

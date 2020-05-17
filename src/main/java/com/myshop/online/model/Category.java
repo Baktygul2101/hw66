@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table (name = "categories")
+@Table (name = "categories", catalog = "myshop")
 public class Category{
     @Id
     @GeneratedValue
@@ -25,8 +24,11 @@ public class Category{
     @Column
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id")
-    @OrderBy("name ASC")
-    List<Product> products;
+ //   @OneToMany(mappedBy = "category",fetch = FetchType.LAZY)
+   // List<Product> products;
+
+    @Override
+    public String toString(){
+        return categoryName;
+    }
 }

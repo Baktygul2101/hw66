@@ -9,7 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-//@RequestMapping
+
+@RequestMapping("/api/products")
 @RestController
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class RestProductController {

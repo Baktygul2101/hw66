@@ -6,13 +6,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table (name = "brands")
+@Table (name = "brands", catalog = "myshop")
 public class Brand{
     @Id
     @GeneratedValue
@@ -21,8 +20,11 @@ public class Brand{
     @Column
     private String brandName;
 
-    @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
-    @JoinColumn(name = "brand_id", referencedColumnName = "id")
-    @OrderBy("name ASC")
-    List<Product> products;
+ //   @OneToMany(mappedBy = "brand",fetch = FetchType.LAZY)
+   // List<Product> products;
+
+    @Override
+    public String toString(){
+        return brandName;
+    }
 }

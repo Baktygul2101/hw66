@@ -58,22 +58,19 @@
     </form>
 </div>
 
-    <div class="colum container">
-    <div class="row">
-        <div class="col-12 col-sm-6 col-lg-4">
-            <#list products as product>
-            <div class="card">
-                <h5 class="card-header"> ${product.name}</h5>
-                <div class="card-body">
-                    <a href="/product/${product.id}"> <img src="/images/${product.image}" width="150" height="150"></a>
-                    <br>
-                    <a href="/cart/${product.id}" class="btn btn-outline-dark">Add to cart</a>
-                    <a href="/product/${product.id}" class="btn btn-outline-dark">Learn More</a>
-                </div>
+    <div class="flex flex-wrap" id="itemList">
+        <#list products as product>
+            <div class="flex flex-column box flex-v-center">
+                <a href="/product/${product.id}">
+                    <div class="flex flex-column flex-v-center box-128">
+                        <h2>${product.name}</h2>
+                        <a href="/product/${product.id}"> <img src="/images/${product.image}" width="150" height="150"></a>
+                    </div>
+                </a>
             </div>
-            </#list>
-        </div>
+        </#list>
     </div>
-</div>
+
+
 
 </@main.renderWith>

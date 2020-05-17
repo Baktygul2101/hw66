@@ -37,15 +37,17 @@ public class Product{
     private double price;
 
     @ManyToOne
+    @JoinColumn
     private Category category;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "brand_id")
+    @ManyToOne
+    @JoinColumn
     private Brand brand;
 
 
-    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy="productList")
     private List<Customer> customerList;
+
 
 
     public int getId() {
