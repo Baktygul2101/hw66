@@ -28,11 +28,12 @@
         <div class="navbar">
             <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Home</a>
             <a href="/products"><i class="fa fa-fw fa-search"></i> Search</a>
+            <a href="/categories"><i class=""></i>Categories</a>
+            <a href="/cart"><i class="fa fa-shopping-cart"></i> My orders</a>
             <a href="/register"><i class="fa fa-fw fa-envelope"></i> Registration</a>
             <a href="/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
             <a href="/login"><i class="fa fa-sign-in"></i> Login</a>
-            <a href="/cart"><i class="fa fa-shopping-cart"></i> My orders</a>
-            <a class="flex box-128" href="/forgot-password"> Забыли Пароль </a>
+            <a class="flex box-128" href="/forgot-password">Forget password </a>
         </div>
         <#nested>
 
