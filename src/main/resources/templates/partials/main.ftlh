@@ -1,6 +1,7 @@
-<#macro renderWith title="online shop" scripts=[] styles=[]>
+<#import "/spring.ftl" as spring>
+<#macro renderWith title="online shop" scripts=[] styles=[] dir="ltr">
     <!doctype html>
-    <html lang="en">
+    <html lang="${.locale}" dir="${dir}">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,9 +15,31 @@
         </#list>
     </head>
     <body>
+    <div class="container">
+        <div>
+            <form action="" method="get">
+                <label for="lang_select">
+                    <@spring.message "label.language" />:
+                </label>
+                <select name="lang" id="lang_select">
+                    <option value="">Default</option>
+                    <option value="" disabled>----------</option>
+                    <option value="en-GB">British English</option>
+                    <option value="en-US">American English</option>
+                    <option value="ru-RU">Русский</option>
+                </select>
+                <button type="submit">
+                    <@spring.message "button.language-change.text" />
+                </button>
+            </form>
+
+
+        <#nested>
+        <p>текущая локаль: ${.locale}</p>
+
 
     <div>
-        <h1>Online shop</h1>
+
         <div class="d-flex justify-content-end">
             <form class="flex box-128" action="/logout" method="post">
                 <#if _csrf??>
@@ -38,7 +61,7 @@
         <#nested>
 
     </div>
-
+        </div>
     <#list scripts as scriptSource>
         <script src="${scriptSource}"></script>
     </#list>
