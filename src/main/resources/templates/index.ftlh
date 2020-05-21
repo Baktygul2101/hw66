@@ -1,7 +1,5 @@
-<#-- импортируем основной шаблон-контейнер который содержит в себе разметку для основной структуры страницы -->
-<#import "partials/main.ftlh" as main />
-
-<#-- обрабатываем его, и передаём ему список скриптов, которые необходимо подключить-->
+<#import "/spring.ftl" as spring>
+<#import "partials/main.ftlh" as main>
 
 <@main.renderWith scripts=["/js/main.js"]>
 

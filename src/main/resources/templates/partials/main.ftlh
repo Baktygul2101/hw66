@@ -45,18 +45,18 @@
                 <#if _csrf??>
                     <input type="hidden" name="${(_csrf.parameterName)!'csrf'}" value="${(_csrf.token)!'--no-token--'}"/>
                 </#if>
-                <button class="flex box-128 logout-button">Выйти </button>
+                <button class="flex box-128 logout-button"><@spring.message "log" /></button>
             </form>
         </div>
         <div class="navbar">
             <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Home</a>
-            <a href="/products"><i class="fa fa-fw fa-search"></i> Search</a>
-            <a href="/categories"><i class=""></i>Categories</a>
-            <a href="/cart"><i class="fa fa-shopping-cart"></i> My orders</a>
-            <a href="/register"><i class="fa fa-fw fa-envelope"></i> Registration</a>
-            <a href="/profile"><i class="fa fa-fw fa-user"></i> Profile</a>
-            <a href="/login"><i class="fa fa-sign-in"></i> Login</a>
-            <a class="flex box-128" href="/forgot-password">Forget password </a>
+            <a href="/products"><i class="fa fa-fw fa-search"></i> <@spring.message "search" /></a>
+
+            <a href="/cart"><i class="fa fa-shopping-cart"></i>  <@spring.message "cart" /></a>
+            <a href="/register"><i class="fa fa-fw fa-envelope"> </i>  <@spring.message "registration" /></a>
+            <a href="/profile"><i class="fa fa-fw fa-user"></i> <@spring.message "profile" /></a>
+            <a href="/login"><i class="fa fa-sign-in"></i>  <@spring.message "login" /></a>
+            <a class="flex box-128" href="/forgot-password">  <@spring.message "forget"/></a>
         </div>
         <#nested>
 
