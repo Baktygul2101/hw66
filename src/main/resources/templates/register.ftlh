@@ -1,7 +1,5 @@
-<#import "partials/main.ftlh" as main />
-
-<@main.renderWith>
-
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
@@ -15,8 +13,8 @@
 
             /* Add padding to containers */
             .container {
-                padding-left: 60px;
-                padding-right: 60px;
+                padding-left: 70px;
+                padding-right: 70px;
                 background-color: white;
             }
 
@@ -45,7 +43,7 @@
             .registerbtn {
                 background-color: #4CAF50;
                 color: white;
-                padding: 16px 15px;
+                padding: 10px 10px;
                 margin: 8px 0;
                 border: none;
                 cursor: pointer;
@@ -98,6 +96,8 @@
 
         <div class="container signin">
             <p>Already have an account? <a href="/login">Sign in</a>.</p>
+            <hr>
+            <a href="/">На главную страницу</a>
         </div>
         <div>
             <#if errors?? >
@@ -111,9 +111,5 @@
 
     </body>
 
-    <div class="bottom-box">
-        <a href="/">На главную страницу</a>
-    </div>
+</html>
 
-
-</@main.renderWith>

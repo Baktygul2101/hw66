@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring>
 <#import "partials/main.ftlh" as main>
 
-<@main.renderWith scripts=["/js/main.js"]>
+<@main.renderWith>
 
     <#if errorText?? >
         <div>

@@ -1,6 +1,5 @@
-<#import "partials/main.ftlh" as main />
-
-<@main.renderWith>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -8,7 +7,7 @@
 
         /* Full-width input fields */
         input[type=text], input[type=password] {
-            width: 100%;
+            width: 70%;
             padding: 12px 15px;
             margin: 8px 0;
             display: inline-block;
@@ -122,13 +121,13 @@
 
     <div>
         <label class="flex flex-v-center ">
-            <span class="label-input-text">Email</span>
+            <span class="label-input-text" style="width: 20px">Email</span>
             <input type="text" name="username" placeholder="ваш адрес почты"  value="${(dto.email)!''}" autofocus >
         </label>
     </div>
     <div>
         <label class="flex flex-v-center label-input-text">
-            <span class="label-input-text">Password:</span>
+            <span class="label-input-text" style="width: 20px">Password:</span>
             <input type="text" name="password" placeholder="пароль" value="">
         </label>
     </div>
@@ -140,4 +139,5 @@
         <a class="flex box-128" href="/forgot-password">Forget password </a>
         <a href="/">На главную страницу</a>
     </div>
-</@main.renderWith>
+</body>
+</html>

@@ -30,16 +30,12 @@
                 </select>
                 <button type="submit">
                     <@spring.message "button.language-change.text" />
-                </button>
+                </button> <br>
+                <p>текущая локаль: ${.locale}</p>
             </form>
 
-
-        <#nested>
-        <p>текущая локаль: ${.locale}</p>
-
-
-    <div>
-
+            <div>
+                <h1><@spring.message "title" /></h1>
         <div class="d-flex justify-content-end">
             <form class="flex box-128" action="/logout" method="post">
                 <#if _csrf??>
@@ -68,5 +64,8 @@
 
     </body>
     </html>
+
+
+
 
 </#macro>
